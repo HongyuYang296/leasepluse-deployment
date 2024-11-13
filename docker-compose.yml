@@ -1,0 +1,25 @@
+version: '3.8'
+services:
+  backend:
+    build:
+      context: https://github.com/HongyuYang296/LeasePluse-springboot.git
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+    networks:
+      - app-network
+
+  frontend:
+    build:
+      context: https://github.com/HongyuYang296/leasepluse-react.git
+    ports:
+      - "5173:5173"
+    environment:
+      - NODE_ENV=production
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
